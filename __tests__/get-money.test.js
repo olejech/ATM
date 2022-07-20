@@ -13,9 +13,7 @@ describe('Get money', () => {
   it('should not give money if have not this amount', async () => {
     const getMoney = createATM({ 5000: 1, 1000: 2, 100: 4 })
 
-    const result = await getMoney(16200)
-
-    expect(result).toBeNull()
+    expect(async () => await getMoney(16200)).rejects.toThrow('have not money')
   })
 
   it('should give all type of banknotes', async () => {
